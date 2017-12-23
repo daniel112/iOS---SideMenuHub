@@ -13,13 +13,13 @@ import SnapKit
 class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOptionSectionControllerDelegate {
     
     //MARK: variables
-    var sideMenuObjects:Array = [Any]()
+    var sideMenuObjects:Array = [ListDiffable]()
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     }()
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = AppTheme().mainColor()
         view.alwaysBounceVertical = true
         return view
     }()
@@ -44,8 +44,6 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
     //MARK: Private Methods
     func setupView() {
         
-       // self.view.backgroundColor = UIColor.lightGray
-        
         //collectionView
         view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints({ (make) in
@@ -62,13 +60,17 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
     
     func createSideMenuObjects() {
         
+        //header
+        let header:SideMenuHeader = SideMenuHeader.init(withName:"Daniel", image: UIImage.init(named: "placeholder_face"))!
+        
         //options
         var options:Array = [Any]()
         
-        options.append(ModuleOption.init(WithName: "Test", photo: nil)!)
+        options.append(ModuleOption.init(WithName: "Test", photo: UIImage.init(named: "placeholder_face"))!)
         options.append(ModuleOption.init(WithName: "Module2", photo: nil)!)
         
         //store in the global array as a ListDiffableArray type
+        self.sideMenuObjects.append(header)
         self.sideMenuObjects.append(ListDiffableArray.init(withArray: options))
         self.adapter.performUpdates(animated: true, completion: nil)
         
@@ -76,7 +78,7 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
     
     //MARK: SideMenuOptionSectionControllerDelegate
     func didSelectSideMenuOptionItem(item: ModuleOption) {
-        
+        print(item.name!)
     }
     
     
@@ -84,14 +86,14 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         
         //sideMenuObjects will contain 2 section arrays (header[array], options[array])
-        return self.sideMenuObjects as! [ListDiffable] 
+        return self.sideMenuObjects
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         
         //header
         if (object is SideMenuHeader) {
-            let sectionController:SideMenuOptionController = SideMenuOptionController()
+            let sectionController:SideMenuHeaderController = SideMenuHeaderController()
             sectionController.delegate = self
             sectionController.revealWidth = self.revealViewController().rearViewRevealWidth
             return sectionController

@@ -1,15 +1,14 @@
 //
-//  SideMenuOptionCollectionViewCell.swift
+//  SideMenuHeaderCollectionViewCell.swift
 //  SideMenuHUB
 //
-//  Created by Daniel Yo on 12/17/17.
+//  Created by Daniel Yo on 12/23/17.
 //  Copyright © 2017 Daniel Yo. All rights reserved.
 //
 
 import UIKit
-import SnapKit
 
-class SideMenuOptionCollectionViewCell: UICollectionViewCell {
+class SideMenuHeaderCollectionViewCell: UICollectionViewCell {
     
     //MARK: Public Var
     var name:String? {
@@ -22,15 +21,19 @@ class SideMenuOptionCollectionViewCell: UICollectionViewCell {
     }
     var image:UIImage? {
         get {
-            return self.imageView?.image
+            return self.imageView.image
         }
         set {
-            self.imageView?.image = newValue
+            self.imageView.image = newValue?.withRenderingMode(.alwaysTemplate)
         }
     }
     
     //MARK: Private Var
     fileprivate var revealWidth:CGFloat?
+    fileprivate var wrapper:UIView = {
+       let wrapper = UIView()
+        return wrapper
+    }()
     lazy private var label:UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
@@ -38,12 +41,12 @@ class SideMenuOptionCollectionViewCell: UICollectionViewCell {
         label.textColor = AppTheme().textColor()
         return label
     }()
-    fileprivate var wrapper:UIView = {
-        let wrapper = UIView()
-        return wrapper
+    fileprivate var imageView:UIImageView = {
+        let imageView = UIImageView()
+        imageView.tintColor = AppTheme().textColor()
+        return imageView
     }()
-    fileprivate var imageView:UIImageView?
-
+    
     //MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,11 +56,8 @@ class SideMenuOptionCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: UICollectionViewCell
-    override var isHighlighted: Bool {
-        didSet {
-            self.contentView.backgroundColor = isHighlighted ? AppTheme().secondaryColor() : nil
-        }
-    }
+    
+    
     //MARK: Public Method
     func updateWithRevealWidth(revealWidth:CGFloat) {
         
@@ -71,19 +71,24 @@ class SideMenuOptionCollectionViewCell: UICollectionViewCell {
                 make.width.equalTo(revealWidth)
                 make.height.equalTo(self.contentView.frame.height)
             })
-
-            //image
             
+            //image
+            wrapper.addSubview(self.imageView)
+            self.imageView.snp.makeConstraints({ (make) in
+                make.top.equalTo(wrapper)
+                make.centerX.equalTo(wrapper)
+                make.width.equalTo(40)
+                make.height.equalTo(40)
+            })
             //text
             wrapper.addSubview(self.label)
+            print("DEBUG:\n" + wrapper.subviews.description)
             self.label.snp.makeConstraints({ (make) in
-                make.centerY.equalTo(wrapper)
-                make.leadingMargin.equalTo(10)
+                make.top.equalTo(self.imageView.snp.bottom)
+                make.centerX.equalTo(wrapper)
             })
             
         }
     }
-    
-    
     
 }

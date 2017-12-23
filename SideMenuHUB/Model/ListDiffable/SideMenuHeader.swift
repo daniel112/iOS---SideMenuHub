@@ -13,9 +13,11 @@ class SideMenuHeader: NSObject, ListDiffable {
     
     
     var name:String?
+    var image:UIImage?
     
-    override init() {
-        super.init()
+    init?(withName name:String, image:UIImage?) {
+        self.name = name
+        self.image = image
     }
     
     //MARK: ListDiffable
@@ -24,7 +26,7 @@ class SideMenuHeader: NSObject, ListDiffable {
     }
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        return (self.diffIdentifier() === (object!.diffIdentifier()))
+        return self.name! == (object!.diffIdentifier() as! String)
     }
     
 
