@@ -34,13 +34,12 @@ class SideMenuOptionController: ListSectionController {
     
     override func sizeForItem(at index: Int) -> CGSize {
         //return .zero
-        return CGSize(width: 100, height: 55)
+        return CGSize(width: self.collectionContext!.containerSize.width, height: 55)
     }
     
-    //NOT HITTING THIS FUNC??
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         
-        let cell:SideMenuOptionCollectionViewCell = self.collectionContext!.dequeueReusableCell(of: SideMenuOptionCollectionViewCell.self, for: self, at: index) as! SideMenuOptionCollectionViewCell
+        let cell:SideMenuOptionCollectionViewCell = self.collectionContext!.dequeueReusableCell(of: SideMenuOptionCollectionViewCell.self, for: self, at: index) as! SideMenuOptionCollectionViewCell 
         
         cell.name = self.optionArray[index].name
         cell.image = self.optionArray[index].image
