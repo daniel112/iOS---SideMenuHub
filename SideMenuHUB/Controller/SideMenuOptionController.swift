@@ -23,13 +23,13 @@ class SideMenuOptionController: ListSectionController {
     override init() {
         super.init()
         //This adds a 15 point padding to the bottom of these objects
-        inset = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
+        //inset = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
     }
 
     
     //MARK: ListSectionController
     override func numberOfItems() -> Int {
-        return optionArray.count
+        return self.optionArray.count
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -53,7 +53,7 @@ class SideMenuOptionController: ListSectionController {
     override func didUpdate(to object: Any) {
         
         let diffableArray:ListDiffableArray = object as! ListDiffableArray
-        self.optionArray = diffableArray.array!
+        self.optionArray = diffableArray.array! as! Array<ModuleOption>
     }
     
     override func didSelectItem(at index: Int) {}

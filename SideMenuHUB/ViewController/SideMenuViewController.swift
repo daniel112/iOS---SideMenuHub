@@ -24,11 +24,14 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
         return view
     }()
     
+    override func loadView() {
+        super.loadView()
+        self.setupView()
+        self.createSideMenuObjects()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.createSideMenuObjects()
-        self.setupView()
+
         // Do any additional setup after loading the view.
     }
 
@@ -41,15 +44,19 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
     //MARK: Private Methods
     func setupView() {
         
-        self.view.backgroundColor = UIColor.lightGray
+       // self.view.backgroundColor = UIColor.lightGray
         
         //collectionView
         view.addSubview(self.collectionView)
+        self.collectionView.snp.makeConstraints({ (make) in
+            make.edges.equalToSuperview()
+        })
         
         
         //adapter
         self.adapter.collectionView = self.collectionView
         self.adapter.dataSource = self
+
         
     }
     
@@ -63,6 +70,7 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
         
         //store in the global array as a ListDiffableArray type
         self.sideMenuObjects.append(ListDiffableArray.init(withArray: options))
+        self.adapter.performUpdates(animated: true, completion: nil)
         
     }
     
@@ -76,7 +84,7 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         
         //sideMenuObjects will contain 2 section arrays (header[array], options[array])
-        return self.sideMenuObjects as! [ListDiffable]
+        return self.sideMenuObjects as! [ListDiffable] 
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
