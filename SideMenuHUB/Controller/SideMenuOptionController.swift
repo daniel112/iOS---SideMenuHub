@@ -10,20 +10,16 @@ import UIKit
 import IGListKit
 
 //MARK: Protocols
-protocol SideMenuOptionSectionControllerDelegate:class {
+protocol SideMenuOptionSectionControllerDelegate {
     func didSelectSideMenuOptionItem(item:ModuleOption)
 }
 
 class SideMenuOptionController: ListSectionController {
 
-    weak var delegate:SideMenuOptionSectionControllerDelegate?
+    var delegate:SideMenuOptionSectionControllerDelegate?
     var revealWidth:CGFloat?
     var optionArray:Array  = [ModuleOption]()
     
-    override init() {
-        super.init()
-    }
-
     
     //MARK: ListSectionController
     override func numberOfItems() -> Int {
@@ -56,8 +52,8 @@ class SideMenuOptionController: ListSectionController {
     override func didSelectItem(at index: Int) {
         
         //if delegate exists and conforms to method
-        if (self.delegate != nil && ((self.delegate?.didSelectSideMenuOptionItem(item: self.optionArray[index])) != nil)) {
-            self.delegate?.didSelectSideMenuOptionItem(item: self.optionArray[index])
+        if (self.delegate != nil) {
+            self.delegate!.didSelectSideMenuOptionItem(item: self.optionArray[index])
         }
         
     }

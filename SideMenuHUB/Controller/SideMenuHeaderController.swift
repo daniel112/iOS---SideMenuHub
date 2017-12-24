@@ -11,14 +11,8 @@ import IGListKit
 
 class SideMenuHeaderController: ListSectionController {
 
-    weak var delegate:SideMenuOptionSectionControllerDelegate?
     var revealWidth:CGFloat?
     var headerObject:SideMenuHeader?
-    
-    override init() {
-        super.init()
-    }
-    
     
     //MARK: ListSectionController
     override func numberOfItems() -> Int {

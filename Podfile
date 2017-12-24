@@ -9,6 +9,7 @@ target 'SideMenuHUB' do
   pod 'IGListKit', '~> 3.0'
   pod 'SnapKit', '~> 4.0'
   pod 'SWRevealViewController', '~> 2.3'
+  pod 'FSCalendar', '~> 2.7'
 
   target 'SideMenuHUBTests' do
     inherit! :search_paths

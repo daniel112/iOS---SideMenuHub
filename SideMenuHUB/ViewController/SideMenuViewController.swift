@@ -9,7 +9,7 @@
 import UIKit
 import IGListKit
 import SnapKit
-
+import SWRevealViewController
 class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOptionSectionControllerDelegate {
     
     //MARK: variables
@@ -79,6 +79,12 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
     //MARK: SideMenuOptionSectionControllerDelegate
     func didSelectSideMenuOptionItem(item: ModuleOption) {
         print(item.name!)
+        if (item.name?.lowercased() == "calendar") {
+            let destinationVC = CalendarViewController()
+            self.revealViewController().pushFrontViewController(UINavigationController.init(rootViewController: destinationVC), animated: true)
+            self.revealViewController().setFrontViewPosition(FrontViewPosition.left, animated: true)
+
+        }
     }
     
     
@@ -94,7 +100,6 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
         //header
         if (object is SideMenuHeader) {
             let sectionController:SideMenuHeaderController = SideMenuHeaderController()
-            sectionController.delegate = self
             sectionController.revealWidth = self.revealViewController().rearViewRevealWidth
             return sectionController
         }
