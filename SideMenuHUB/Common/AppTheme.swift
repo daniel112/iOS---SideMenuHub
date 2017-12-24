@@ -10,6 +10,7 @@ import UIKit
 
 class AppTheme: NSObject {
 
+    //MARK: Colors
     func mainColor() -> UIColor {
         return UIColor(red:0.27, green:0.27, blue:0.33, alpha:1.0)
     }
@@ -21,4 +22,14 @@ class AppTheme: NSObject {
     func textColor() -> UIColor {
         return UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
     }
+    
+    //MARK: Fonts
+    func mainFont_regular() -> String {
+        return "HelveticaNeue"
+    }
+    
+    func mainFont_bold() -> String {
+        return "HelveticaNeue-Bold"
+    }
+    
 }

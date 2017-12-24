@@ -26,6 +26,9 @@
 		65B9E2BC1FEEF07C00E04121 /* placeholder_face.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B9E2B91FEEF07C00E04121 /* placeholder_face.png */; };
 		65B9E2BE1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9E2BD1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift */; };
 		65B9E2C31FEF065700E04121 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9E2C21FEF065700E04121 /* AppTheme.swift */; };
+		65DB37921FEF3B3500BC5656 /* calendar_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DB378F1FEF3B3500BC5656 /* calendar_2x.png */; };
+		65DB37931FEF3B3500BC5656 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DB37901FEF3B3500BC5656 /* calendar.png */; };
+		65DB37941FEF3B3500BC5656 /* calendar_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DB37911FEF3B3500BC5656 /* calendar_3x.png */; };
 		7B86906BB20083E2F52537AA /* Pods_SideMenuHUBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CA93C70BCB92A48003875C /* Pods_SideMenuHUBTests.framework */; };
 		99DEBCFA9B05214EFFA92C25 /* Pods_SideMenuHUB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE5F696513BED62B251B4DB8 /* Pods_SideMenuHUB.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +80,9 @@
 		65B9E2B91FEEF07C00E04121 /* placeholder_face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_face.png; sourceTree = "<group>"; };
 		65B9E2BD1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		65B9E2C21FEF065700E04121 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		65DB378F1FEF3B3500BC5656 /* calendar_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_2x.png; path = ../../../../../../../../../Downloads/calendar_2x.png; sourceTree = "<group>"; };
+		65DB37901FEF3B3500BC5656 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar.png; path = ../../../../../../../../../Downloads/calendar.png; sourceTree = "<group>"; };
+		65DB37911FEF3B3500BC5656 /* calendar_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_3x.png; path = ../../../../../../../../../Downloads/calendar_3x.png; sourceTree = "<group>"; };
 		BC47947DAAB0BC228567E980 /* Pods-SideMenuHUBUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideMenuHUBUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SideMenuHUBUITests/Pods-SideMenuHUBUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BE5F696513BED62B251B4DB8 /* Pods_SideMenuHUB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideMenuHUB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58D7AA1574CC9C83C822BDB /* Pods-SideMenuHUBUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideMenuHUBUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SideMenuHUBUITests/Pods-SideMenuHUBUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,9 +269,12 @@
 		65B9E2B61FEEF06200E04121 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				65DB37901FEF3B3500BC5656 /* calendar.png */,
+				65DB378F1FEF3B3500BC5656 /* calendar_2x.png */,
+				65DB37911FEF3B3500BC5656 /* calendar_3x.png */,
+				65B9E2B91FEEF07C00E04121 /* placeholder_face.png */,
 				65B9E2B71FEEF07C00E04121 /* placeholder_face_2x.png */,
 				65B9E2B81FEEF07C00E04121 /* placeholder_face_3x.png */,
-				65B9E2B91FEEF07C00E04121 /* placeholder_face.png */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -395,9 +404,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				65B9E2BC1FEEF07C00E04121 /* placeholder_face.png in Resources */,
+				65DB37931FEF3B3500BC5656 /* calendar.png in Resources */,
 				65B9E2BB1FEEF07C00E04121 /* placeholder_face_3x.png in Resources */,
 				65B9E2BA1FEEF07C00E04121 /* placeholder_face_2x.png in Resources */,
+				65DB37941FEF3B3500BC5656 /* calendar_3x.png in Resources */,
 				65B9E2621FE704E300E04121 /* Assets.xcassets in Resources */,
+				65DB37921FEF3B3500BC5656 /* calendar_2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

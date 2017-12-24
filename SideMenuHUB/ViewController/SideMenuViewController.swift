@@ -67,7 +67,7 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
         var options:Array = [Any]()
         
         options.append(ModuleOption.init(WithName: "Test", photo: UIImage.init(named: "placeholder_face"))!)
-        options.append(ModuleOption.init(WithName: "Module2", photo: nil)!)
+        options.append(ModuleOption.init(WithName: "Calendar", photo: UIImage.init(named: "calendar"))!)
         
         //store in the global array as a ListDiffableArray type
         self.sideMenuObjects.append(header)

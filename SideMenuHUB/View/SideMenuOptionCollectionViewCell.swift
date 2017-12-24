@@ -22,10 +22,10 @@ class SideMenuOptionCollectionViewCell: UICollectionViewCell {
     }
     var image:UIImage? {
         get {
-            return self.imageView?.image
+            return self.imageView.image
         }
         set {
-            self.imageView?.image = newValue
+            self.imageView.image = newValue
         }
     }
     
@@ -34,7 +34,7 @@ class SideMenuOptionCollectionViewCell: UICollectionViewCell {
     lazy private var label:UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
-        label.font = .systemFont(ofSize: 17)
+        label.font = UIFont(name: AppTheme().mainFont_regular(), size: 17)
         label.textColor = AppTheme().textColor()
         return label
     }()
@@ -42,7 +42,10 @@ class SideMenuOptionCollectionViewCell: UICollectionViewCell {
         let wrapper = UIView()
         return wrapper
     }()
-    fileprivate var imageView:UIImageView?
+    fileprivate var imageView:UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
 
     //MARK: Initialization
     override init(frame: CGRect) {
@@ -72,13 +75,21 @@ class SideMenuOptionCollectionViewCell: UICollectionViewCell {
                 make.height.equalTo(self.contentView.frame.height)
             })
 
-            //image
+            //IMAGE
+            wrapper.addSubview(self.imageView)
+            self.imageView.snp.makeConstraints({ (make) in
+                make.width.equalTo(40)
+                make.height.equalTo(40)
+                make.centerY.equalTo(wrapper)
+                make.leadingMargin.equalTo(15)
+            })
             
-            //text
+            //TEXT
+            //center y and 10 pixel from imageview
             wrapper.addSubview(self.label)
             self.label.snp.makeConstraints({ (make) in
                 make.centerY.equalTo(wrapper)
-                make.leadingMargin.equalTo(10)
+                make.left.equalTo(self.imageView.snp.right).offset(10)
             })
             
         }

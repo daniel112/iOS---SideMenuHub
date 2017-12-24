@@ -37,7 +37,7 @@ class SideMenuHeaderCollectionViewCell: UICollectionViewCell {
     lazy private var label:UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
-        label.font = .systemFont(ofSize: 17)
+        label.font = UIFont(name: AppTheme().mainFont_bold(), size: 20)
         label.textColor = AppTheme().textColor()
         return label
     }()
