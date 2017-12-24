@@ -7,6 +7,17 @@
 //
 
 import UIKit
+// Delegates
+
+// Utilities
+import SWRevealViewController
+// Globals
+
+// Classes
+
+// Class Extensions
+
+// Definitions
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +27,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        //navigationBar settings
+        UINavigationBar.appearance().tintColor = UIColor.black
+        //easy way to make nav bar transparent
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().isTranslucent = true
+        
+        let navigationController:UINavigationController = UINavigationController.init(rootViewController: HomeViewController())
+        
+        // Initialize the window
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+
+        let swrevealView = SWRevealViewController.init(rearViewController: SideMenuViewController(), frontViewController: navigationController)
+        window!.rootViewController = swrevealView
+        
+        // Make the window visible
+        window!.makeKeyAndVisible()
+        
+        
+        
+        
         return true
     }
 
