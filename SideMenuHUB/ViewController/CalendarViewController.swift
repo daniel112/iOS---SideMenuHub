@@ -22,17 +22,35 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     fileprivate let collectionView: UICollectionView = {
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.backgroundColor = UIColor.white
-        view.alwaysBounceVertical = true
+        //view.alwaysBounceVertical = true
         return view
     }()
+    
+    fileprivate var calendar: FSCalendar = {
+        let calendar = FSCalendar()
+        calendar.allowsMultipleSelection = true
+        calendar.backgroundColor = UIColor.white
+        calendar.clipsToBounds = true //hide top-bottom border
+        calendar.swipeToChooseGesture.isEnabled = true // Swipe-To-Choose
+        return calendar
+    }()
+    fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
+        [unowned self] in
+        let panGesture = UIPanGestureRecognizer(target: self.calendar, action: #selector(self.calendar.handleScopeGesture(_:)))
+        panGesture.delegate = self
+        panGesture.minimumNumberOfTouches = 1
+        panGesture.maximumNumberOfTouches = 2
+        return panGesture
+        }()
     
     //MARK: LifeCycle
     
     override func loadView() {
         super.loadView()
+        self.setupObserver()
         self.setupView()
-        self.getCalendarObjects()
-        self.adapter.performUpdates(animated: true, completion: nil)
+        self.setupConstraints()
+        self.getCalendarSectionObjects()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,31 +62,70 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        //remove observer to prevent memory leak
+         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+
+
     
     //MARK: Private method
-    fileprivate func setupView() {
+    
+    fileprivate func setupObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(CalendarViewController.orientationDidChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    fileprivate func setupConstraints() {
+        //Calendar
+        self.calendar.snp.updateConstraints { (make) in
+            make.width.equalTo(self.view.frame.width)
+            make.height.equalTo(300)
+            make.left.equalTo(self.view)
+            make.top.equalTo((self.navigationController?.navigationBar.frame.height)!)
+        }
         
         //collectionView
-        view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints({ (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(self.calendar.snp.bottom)
+            make.left.bottom.right.equalTo(self.view)
         })
+    }
+    fileprivate func setupView() {
         
+        //Calendar
+        self.view.addSubview(self.calendar)
+        self.view.addGestureRecognizer(self.scopeGesture)
+        self.calendar.dataSource = self
+        self.calendar.delegate = self
+        //collectionView
+        self.view.addSubview(self.collectionView)
+        self.collectionView.backgroundColor = UIColor.blue
         //adapter
         self.adapter.collectionView = self.collectionView
         self.adapter.dataSource = self
-
+      
     }
     
-    fileprivate func getCalendarObjects() {
+    fileprivate func getCalendarSectionObjects() {
         
-        let calendarConfig:CalendarConfig = CalendarConfig.init(WithProperties: 300, backgroundColor: UIColor.white, clipsToBound: true, allowMultiSelect: true)
-        self.calendarViewObjects.append(calendarConfig)
-        //self.sideMenuObjects.append(ListDiffableArray.init(withArray: options))
+        //options
+        var options:Array = [Any]()
         
+        options.append(ModuleOption.init(WithName: "Week", photo: UIImage.init(named: "placeholder_face"))!)
+        options.append(ModuleOption.init(WithName: "Month", photo: UIImage.init(named: "calendar"))!)
+        
+        //store in the global array as a ListDiffableArray type
+        self.calendarViewObjects.append(ListDiffableArray.init(withArray: options))
+        self.adapter.performUpdates(animated: true, completion: nil)
         
     }
     
+    //MARK: - objc Methods
+    @objc func orientationDidChange() {
+        print("Orientation changed")
+        setupConstraints()
+        self.adapter.reloadData(completion: nil)
+    }
     //MARK: FSCalendarDelegate
     
     //Tells the delegate a date in the calendar is deselected by tapping.
@@ -80,7 +137,14 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
         print("Selected Date \(date)")
     }
 
-
+    //needs to update frame when hiding/showing week-month view
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        calendar.snp.updateConstraints { (make) in
+            make.height.equalTo(bounds.height)
+            // Do other updates
+        }
+        self.view.layoutIfNeeded()
+    }
      //Asks the delegate whether the specific date is allowed to be selected by tapping.
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return true
@@ -93,15 +157,16 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         
-        if (object is CalendarConfig) {
-            let sectionController:CalendarSectionController = CalendarSectionController()
-            sectionController.delegate = self
+        //2nd section
+        if (object is ListDiffableArray) {
+            let sectionController:EmbeddedSectionController = EmbeddedSectionController()
             return sectionController
         }
-        else {
-            let sectionController:CalendarSectionController = CalendarSectionController()
-            sectionController.delegate = self
+        else {//3rd section
+            //PLACEHOLDER
+            let sectionController:EmbeddedSectionController = EmbeddedSectionController()
             return sectionController
+            
         }
     }
     
