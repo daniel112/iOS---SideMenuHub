@@ -28,6 +28,7 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
         super.loadView()
         self.setupView()
         self.createSideMenuObjects()
+        self.adapter.performUpdates(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,7 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
         self.collectionView.snp.makeConstraints({ (make) in
             make.edges.equalToSuperview()
         })
-        
-        
+
         //adapter
         self.adapter.collectionView = self.collectionView
         self.adapter.dataSource = self
@@ -72,7 +72,7 @@ class SideMenuViewController: UIViewController, ListAdapterDataSource,SideMenuOp
         //store in the global array as a ListDiffableArray type
         self.sideMenuObjects.append(header)
         self.sideMenuObjects.append(ListDiffableArray.init(withArray: options))
-        self.adapter.performUpdates(animated: true, completion: nil)
+        
         
     }
     

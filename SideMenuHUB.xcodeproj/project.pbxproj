@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		10A5F7B5E51A73C3E91EE54A /* Pods_SideMenuHUBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522B86F89E8B9B52236DD0B8 /* Pods_SideMenuHUBUITests.framework */; };
+		652088211FF06BBD00C0080E /* CalendarSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088201FF06BBD00C0080E /* CalendarSectionController.swift */; };
+		652088251FF0705A00C0080E /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088241FF0705A00C0080E /* CalendarCollectionViewCell.swift */; };
+		652088281FF0864200C0080E /* CalendarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088271FF0864200C0080E /* CalendarConfig.swift */; };
 		65B9E25B1FE704E300E04121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9E25A1FE704E300E04121 /* AppDelegate.swift */; };
 		65B9E2621FE704E300E04121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65B9E2611FE704E300E04121 /* Assets.xcassets */; };
 		65B9E2701FE704E400E04121 /* SideMenuHUBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9E26F1FE704E400E04121 /* SideMenuHUBTests.swift */; };
@@ -57,6 +60,9 @@
 		522B86F89E8B9B52236DD0B8 /* Pods_SideMenuHUBUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideMenuHUBUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BA2505B6150F0B244431C1 /* Pods-SideMenuHUB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideMenuHUB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SideMenuHUB/Pods-SideMenuHUB.debug.xcconfig"; sourceTree = "<group>"; };
 		626AD27C1AC7C866571811A8 /* Pods-SideMenuHUB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideMenuHUB.release.xcconfig"; path = "Pods/Target Support Files/Pods-SideMenuHUB/Pods-SideMenuHUB.release.xcconfig"; sourceTree = "<group>"; };
+		652088201FF06BBD00C0080E /* CalendarSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSectionController.swift; sourceTree = "<group>"; };
+		652088241FF0705A00C0080E /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		652088271FF0864200C0080E /* CalendarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarConfig.swift; sourceTree = "<group>"; };
 		65B9E2571FE704E300E04121 /* SideMenuHUB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideMenuHUB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B9E25A1FE704E300E04121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65B9E2611FE704E300E04121 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +149,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		652088221FF06BD800C0080E /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				65B9E2A01FE768A800E04121 /* SideMenuOptionController.swift */,
+				65B9E2A21FE768B300E04121 /* SideMenuHeaderController.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		652088231FF06BEA00C0080E /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				65B9E2BD1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift */,
+				65B9E2A71FE7794500E04121 /* SideMenuOptionCollectionViewCell.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		652088261FF084FE00C0080E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				652088271FF0864200C0080E /* CalendarConfig.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		65B9E24E1FE704E300E04121 = {
 			isa = PBXGroup;
 			children = (
@@ -211,7 +243,9 @@
 		65B9E2971FE7223C00E04121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				652088261FF084FE00C0080E /* Calendar */,
 				65B9E29F1FE736FA00E04121 /* ListDiffable */,
+				65B9E29D1FE734AF00E04121 /* SideMenuHeader.swift */,
 				65B9E2981FE7235700E04121 /* ModuleOption.swift */,
 			);
 			path = Model;
@@ -220,8 +254,8 @@
 		65B9E29C1FE72E2D00E04121 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				65B9E2A01FE768A800E04121 /* SideMenuOptionController.swift */,
-				65B9E2A21FE768B300E04121 /* SideMenuHeaderController.swift */,
+				652088221FF06BD800C0080E /* SideMenu */,
+				652088201FF06BBD00C0080E /* CalendarSectionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -230,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				65B9E29A1FE726F600E04121 /* ListDiffableArray.swift */,
-				65B9E29D1FE734AF00E04121 /* SideMenuHeader.swift */,
 			);
 			path = ListDiffable;
 			sourceTree = "<group>";
@@ -238,8 +271,8 @@
 		65B9E2A61FE7791D00E04121 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				65B9E2BD1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift */,
-				65B9E2A71FE7794500E04121 /* SideMenuOptionCollectionViewCell.swift */,
+				652088231FF06BEA00C0080E /* SideMenu */,
+				652088241FF0705A00C0080E /* CalendarCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -588,16 +621,19 @@
 				65B9E2A11FE768A800E04121 /* SideMenuOptionController.swift in Sources */,
 				65B9E25B1FE704E300E04121 /* AppDelegate.swift in Sources */,
 				65B9E2951FE71DC600E04121 /* BaseViewController.swift in Sources */,
+				652088281FF0864200C0080E /* CalendarConfig.swift in Sources */,
 				65B9E2A81FE7794500E04121 /* SideMenuOptionCollectionViewCell.swift in Sources */,
 				65B9E29B1FE726F600E04121 /* ListDiffableArray.swift in Sources */,
 				65B9E28D1FE7118600E04121 /* SideMenuViewController.swift in Sources */,
 				65B9E2991FE7235700E04121 /* ModuleOption.swift in Sources */,
 				65B9E28B1FE70D2000E04121 /* HomeViewController.swift in Sources */,
 				65DB379A1FEF494D00BC5656 /* CalendarViewController.swift in Sources */,
+				652088251FF0705A00C0080E /* CalendarCollectionViewCell.swift in Sources */,
 				65B9E2A31FE768B300E04121 /* SideMenuHeaderController.swift in Sources */,
 				65B9E2C31FEF065700E04121 /* AppTheme.swift in Sources */,
 				65B9E2BE1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift in Sources */,
 				65B9E29E1FE734AF00E04121 /* SideMenuHeader.swift in Sources */,
+				652088211FF06BBD00C0080E /* CalendarSectionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

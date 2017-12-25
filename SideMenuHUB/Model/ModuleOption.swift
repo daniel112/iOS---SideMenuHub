@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModuleOption: NSObject {
+struct ModuleOption {
 
     //MARK: Properties
     var image:UIImage?

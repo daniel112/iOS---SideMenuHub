@@ -9,23 +9,30 @@
 import UIKit
 import SnapKit
 import FSCalendar
+import IGListKit
 
-class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
+class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance, UIGestureRecognizerDelegate, ListAdapterDataSource {
 
     //MARK: Private Variables
-    fileprivate var calendar: FSCalendar = {
-        let calendar = FSCalendar()
-        calendar.allowsMultipleSelection = true
-        calendar.backgroundColor = UIColor.white
-        calendar.clipsToBounds = true //hide top-bottom border
-        calendar.swipeToChooseGesture.isEnabled = true // Swipe-To-Choose
-        return calendar
+    fileprivate var calendarViewObjects:Array = [ListDiffable]()
+    
+    fileprivate lazy var adapter: ListAdapter = {
+        return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     }()
+    fileprivate let collectionView: UICollectionView = {
+        let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.backgroundColor = UIColor.white
+        view.alwaysBounceVertical = true
+        return view
+    }()
+    
     //MARK: LifeCycle
     
     override func loadView() {
         super.loadView()
         self.setupView()
+        self.getCalendarObjects()
+        self.adapter.performUpdates(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,37 +46,66 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     }
     
     //MARK: Private method
-    private func setupView() {
+    fileprivate func setupView() {
         
-        //Wrapper
-        let wrapper = UIView()
-        self.view.addSubview(wrapper)
-        wrapper.backgroundColor = UIColor.white
-        wrapper.snp.makeConstraints({ (make) in
-            make.left.equalTo(self.view)
-            make.size.equalTo(self.view)
-            make.top.equalTo(self.view)
+        //collectionView
+        view.addSubview(self.collectionView)
+        self.collectionView.snp.makeConstraints({ (make) in
+            make.edges.equalToSuperview()
         })
-        //Calendar
-        self.calendar.dataSource = self
-        self.calendar.delegate = self
-
-        wrapper.addSubview(self.calendar)
-        self.calendar.snp.updateConstraints { (make) in
-            make.width.equalTo(wrapper.snp.width)
-            make.height.equalTo(wrapper.snp.height)
-           make.top.equalTo(self.navigationController!.navigationBar.frame.height)
-        }
+        
+        //adapter
+        self.adapter.collectionView = self.collectionView
+        self.adapter.dataSource = self
 
     }
     
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        calendar.snp.updateConstraints { (make) in
-            make.height.equalTo(bounds.height)
-            // Do other updates
-        }
-        self.view.layoutIfNeeded()
+    fileprivate func getCalendarObjects() {
+        
+        let calendarConfig:CalendarConfig = CalendarConfig.init(WithProperties: 300, backgroundColor: UIColor.white, clipsToBound: true, allowMultiSelect: true)
+        self.calendarViewObjects.append(calendarConfig)
+        //self.sideMenuObjects.append(ListDiffableArray.init(withArray: options))
+        
+        
+    }
+    
+    //MARK: FSCalendarDelegate
+    
+    //Tells the delegate a date in the calendar is deselected by tapping.
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("Deselect Date \(date)")
+    }
+    // Tells the delegate a date in the calendar is selected by tapping.
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("Selected Date \(date)")
     }
 
 
+     //Asks the delegate whether the specific date is allowed to be selected by tapping.
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        return true
+    }
+
+    //MARK: ListAdapterDataSource
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return self.calendarViewObjects
+    }
+    
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        
+        if (object is CalendarConfig) {
+            let sectionController:CalendarSectionController = CalendarSectionController()
+            sectionController.delegate = self
+            return sectionController
+        }
+        else {
+            let sectionController:CalendarSectionController = CalendarSectionController()
+            sectionController.delegate = self
+            return sectionController
+        }
+    }
+    
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
+    }
 }

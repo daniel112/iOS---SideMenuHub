@@ -27,7 +27,6 @@ class SideMenuOptionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        //return .zero
         return CGSize(width: self.collectionContext!.containerSize.width, height: 55)
     }
     
@@ -52,8 +51,8 @@ class SideMenuOptionController: ListSectionController {
     override func didSelectItem(at index: Int) {
         
         //if delegate exists and conforms to method
-        if (self.delegate != nil) {
-            self.delegate!.didSelectSideMenuOptionItem(item: self.optionArray[index])
+        if let delegateVC = self.delegate {
+            delegateVC.didSelectSideMenuOptionItem(item: self.optionArray[index])
         }
         
     }

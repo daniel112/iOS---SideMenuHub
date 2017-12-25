@@ -16,9 +16,7 @@ class ListDiffableArray: NSObject, ListDiffable  {
     
     override init() {
         super.init()
-        identifier = UUID().uuidString
-        
-        
+        identifier = UUID().uuidString  
     }
     init(withArray array:Array<Any>) {
         
