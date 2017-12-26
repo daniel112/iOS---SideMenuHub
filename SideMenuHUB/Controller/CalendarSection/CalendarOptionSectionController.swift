@@ -9,8 +9,16 @@
 import UIKit
 import IGListKit
 
+//MARK: Protocols
+protocol CalendarOptionSectionControllerDelegate {
+    func didSelectCalendarOptionItem(item:ModuleOption)
+}
+
 class CalendarOptionSectionController: ListSectionController {
 
+    //MARK: Public Variable
+    var delegate:CalendarOptionSectionControllerDelegate?
+    
     //MARK: Private Variable
     fileprivate var optionArray:Array  = [ModuleOption]()
     
@@ -45,5 +53,10 @@ class CalendarOptionSectionController: ListSectionController {
         self.optionArray = diffableArray.array! as! Array<ModuleOption>
     }
     
-    override func didSelectItem(at index: Int) {}
+    override func didSelectItem(at index: Int) {
+        //if delegate exists and conforms to method
+        if let delegateVC = self.delegate {
+            delegateVC.didSelectCalendarOptionItem(item: self.optionArray[index])
+        }
+    }
 }

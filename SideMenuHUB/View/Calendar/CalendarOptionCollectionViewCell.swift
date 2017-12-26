@@ -28,20 +28,22 @@ class CalendarOptionCollectionViewCell: UICollectionViewCell {
             self.imageView.image = newValue
         }
     }
-    lazy var collectionView:UICollectionView = {
-        let wrapper = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
-        wrapper.alwaysBounceHorizontal = true
+    
+    //MARK: Private Variable
+    lazy fileprivate var wrapper:UIView = {
+        let wrapper = UIView()
+        wrapper.layer.borderWidth = 1
+        wrapper.layer.borderColor = UIColor.black.cgColor
         return wrapper
     }()
-    //MARK: Private Variable
-    lazy private var label:UILabel = {
+    lazy fileprivate var label:UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
         label.font = UIFont(name: AppTheme().mainFont_regular(), size: 17)
         label.textColor = AppTheme().textColor()
         return label
     }()
-    fileprivate var imageView:UIImageView = {
+    lazy fileprivate var imageView:UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
@@ -54,38 +56,39 @@ class CalendarOptionCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Public Method
-    func updateView() {
-        self.collectionView.backgroundColor = UIColor.magenta
-        self.contentView.addSubview(self.collectionView)
-        self.collectionView.snp.updateConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        //image
-        if let _ = self.image {
-            self.collectionView.addSubview(self.imageView)
-            self.imageView.snp.makeConstraints({ (make) in
-                make.top.equalTo(self.collectionView)
-                make.centerX.equalTo(collectionView)
-                make.width.equalTo(40)
-                make.height.equalTo(40)
-            })
-        }
-       
-        //text
-        self.collectionView.addSubview(self.label)
-        self.label.snp.makeConstraints({ (make) in
-            make.centerY.equalTo(self.collectionView)
-            make.left.equalTo(15)
-        })
-    }
-    
     //MARK: UICollectionViewCell
     override var isHighlighted: Bool {
         didSet {
             self.contentView.backgroundColor = isHighlighted ? AppTheme().secondaryColor() : nil
         }
     }
+    
+    //MARK: Public Method
+    func updateView() {
+        self.wrapper.backgroundColor = UIColor.clear
+        self.contentView.addSubview(self.wrapper)
+        self.wrapper.snp.updateConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        //image
+        if let _ = self.image {
+            self.wrapper.addSubview(self.imageView)
+            self.imageView.snp.makeConstraints({ (make) in
+                make.top.equalTo(self.wrapper)
+                make.centerX.equalTo(self.wrapper)
+                make.width.equalTo(40)
+                make.height.equalTo(40)
+            })
+        }
+       
+        //text
+        self.wrapper.addSubview(self.label)
+        self.label.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(self.wrapper)
+            make.left.equalTo(15)
+        })
+    }
+
     
 }

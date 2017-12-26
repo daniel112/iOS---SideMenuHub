@@ -14,9 +14,11 @@ class EmbeddedCollectionViewCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = .green
+        view.backgroundColor = .clear
         view.alwaysBounceVertical = false
         view.alwaysBounceHorizontal = true
+//        view.layer.borderWidth = 1
+//        view.layer.borderColor = AppTheme().mainColor().cgColor
         return view
     }()
     

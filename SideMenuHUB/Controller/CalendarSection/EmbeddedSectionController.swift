@@ -11,6 +11,9 @@ import IGListKit
 
 class EmbeddedSectionController: ListSectionController, ListAdapterDataSource {
 
+    //MARK: Public Variable
+    var delegate:CalendarOptionSectionControllerDelegate?
+    
     //MARK: Private Variable
     fileprivate var optionArray:Array = [ListDiffable]()
     
@@ -51,7 +54,7 @@ class EmbeddedSectionController: ListSectionController, ListAdapterDataSource {
         self.optionArray.append(diffableArray)
     }
     
-    override func didSelectItem(at index: Int) {}
+    override func didSelectItem(at index: Int) {    }
     
     // MARK: ListAdapterDataSource
     
@@ -63,6 +66,7 @@ class EmbeddedSectionController: ListSectionController, ListAdapterDataSource {
         
         let sectionController = CalendarOptionSectionController()
         sectionController.width = collectionContext!.containerSize.width/2
+        sectionController.delegate = self.delegate
         return sectionController
     }
     
