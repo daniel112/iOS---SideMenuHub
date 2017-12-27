@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		10A5F7B5E51A73C3E91EE54A /* Pods_SideMenuHUBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522B86F89E8B9B52236DD0B8 /* Pods_SideMenuHUBUITests.framework */; };
+		65164F7B1FF33EF200138E01 /* event_icon_closed.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F721FF33EF100138E01 /* event_icon_closed.png */; };
+		65164F7C1FF33EF200138E01 /* event_icon_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F731FF33EF100138E01 /* event_icon_open.png */; };
+		65164F7D1FF33EF200138E01 /* event_icon_important_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F741FF33EF100138E01 /* event_icon_important_2x.png */; };
+		65164F7E1FF33EF200138E01 /* event_icon_closed_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F751FF33EF100138E01 /* event_icon_closed_3x.png */; };
+		65164F7F1FF33EF200138E01 /* event_icon_open_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F761FF33EF100138E01 /* event_icon_open_2x.png */; };
+		65164F801FF33EF200138E01 /* event_icon_open_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F771FF33EF100138E01 /* event_icon_open_3x.png */; };
+		65164F811FF33EF200138E01 /* event_icon_important_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F781FF33EF100138E01 /* event_icon_important_3x.png */; };
+		65164F821FF33EF200138E01 /* event_icon_closed_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F791FF33EF100138E01 /* event_icon_closed_2x.png */; };
+		65164F831FF33EF200138E01 /* event_icon_important.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F7A1FF33EF200138E01 /* event_icon_important.png */; };
+		65164F851FF33FB700138E01 /* GlobalImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F841FF33FB700138E01 /* GlobalImages.swift */; };
+		65164F8A1FF341C100138E01 /* nav_icon_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F871FF341C100138E01 /* nav_icon_right.png */; };
+		65164F8B1FF341C100138E01 /* nav_icon_right_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F881FF341C100138E01 /* nav_icon_right_2x.png */; };
+		65164F8C1FF341C100138E01 /* nav_icon_right_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F891FF341C100138E01 /* nav_icon_right_3x.png */; };
+		65164F8E1FF3435000138E01 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F8D1FF3435000138E01 /* AddEventViewController.swift */; };
 		6520882E1FF0A96900C0080E /* EmbeddedSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520882D1FF0A96900C0080E /* EmbeddedSectionController.swift */; };
 		652088311FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088301FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift */; };
 		652088331FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088321FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift */; };
@@ -35,9 +49,6 @@
 		65B9E2BC1FEEF07C00E04121 /* placeholder_face.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B9E2B91FEEF07C00E04121 /* placeholder_face.png */; };
 		65B9E2BE1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9E2BD1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift */; };
 		65B9E2C31FEF065700E04121 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9E2C21FEF065700E04121 /* AppTheme.swift */; };
-		65DB37921FEF3B3500BC5656 /* calendar_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DB378F1FEF3B3500BC5656 /* calendar_2x.png */; };
-		65DB37931FEF3B3500BC5656 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DB37901FEF3B3500BC5656 /* calendar.png */; };
-		65DB37941FEF3B3500BC5656 /* calendar_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DB37911FEF3B3500BC5656 /* calendar_3x.png */; };
 		65DB379A1FEF494D00BC5656 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DB37991FEF494D00BC5656 /* CalendarViewController.swift */; };
 		7B86906BB20083E2F52537AA /* Pods_SideMenuHUBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CA93C70BCB92A48003875C /* Pods_SideMenuHUBTests.framework */; };
 		99DEBCFA9B05214EFFA92C25 /* Pods_SideMenuHUB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE5F696513BED62B251B4DB8 /* Pods_SideMenuHUB.framework */; };
@@ -66,6 +77,20 @@
 		522B86F89E8B9B52236DD0B8 /* Pods_SideMenuHUBUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideMenuHUBUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BA2505B6150F0B244431C1 /* Pods-SideMenuHUB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideMenuHUB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SideMenuHUB/Pods-SideMenuHUB.debug.xcconfig"; sourceTree = "<group>"; };
 		626AD27C1AC7C866571811A8 /* Pods-SideMenuHUB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideMenuHUB.release.xcconfig"; path = "Pods/Target Support Files/Pods-SideMenuHUB/Pods-SideMenuHUB.release.xcconfig"; sourceTree = "<group>"; };
+		65164F721FF33EF100138E01 /* event_icon_closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_closed.png; sourceTree = "<group>"; };
+		65164F731FF33EF100138E01 /* event_icon_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_open.png; sourceTree = "<group>"; };
+		65164F741FF33EF100138E01 /* event_icon_important_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_important_2x.png; sourceTree = "<group>"; };
+		65164F751FF33EF100138E01 /* event_icon_closed_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_closed_3x.png; sourceTree = "<group>"; };
+		65164F761FF33EF100138E01 /* event_icon_open_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_open_2x.png; sourceTree = "<group>"; };
+		65164F771FF33EF100138E01 /* event_icon_open_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_open_3x.png; sourceTree = "<group>"; };
+		65164F781FF33EF100138E01 /* event_icon_important_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_important_3x.png; sourceTree = "<group>"; };
+		65164F791FF33EF100138E01 /* event_icon_closed_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_closed_2x.png; sourceTree = "<group>"; };
+		65164F7A1FF33EF200138E01 /* event_icon_important.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_icon_important.png; sourceTree = "<group>"; };
+		65164F841FF33FB700138E01 /* GlobalImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalImages.swift; sourceTree = "<group>"; };
+		65164F871FF341C100138E01 /* nav_icon_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_icon_right.png; sourceTree = "<group>"; };
+		65164F881FF341C100138E01 /* nav_icon_right_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_icon_right_2x.png; sourceTree = "<group>"; };
+		65164F891FF341C100138E01 /* nav_icon_right_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_icon_right_3x.png; sourceTree = "<group>"; };
+		65164F8D1FF3435000138E01 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		6520882D1FF0A96900C0080E /* EmbeddedSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedSectionController.swift; sourceTree = "<group>"; };
 		652088301FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		652088321FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -99,9 +124,6 @@
 		65B9E2B91FEEF07C00E04121 /* placeholder_face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_face.png; sourceTree = "<group>"; };
 		65B9E2BD1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		65B9E2C21FEF065700E04121 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
-		65DB378F1FEF3B3500BC5656 /* calendar_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_2x.png; path = ../../../../../../../../../Downloads/calendar_2x.png; sourceTree = "<group>"; };
-		65DB37901FEF3B3500BC5656 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar.png; path = ../../../../../../../../../Downloads/calendar.png; sourceTree = "<group>"; };
-		65DB37911FEF3B3500BC5656 /* calendar_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_3x.png; path = ../../../../../../../../../Downloads/calendar_3x.png; sourceTree = "<group>"; };
 		65DB37981FEF485B00BC5656 /* FSCalendar-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSCalendar-Bridge-Header.h"; sourceTree = "<group>"; };
 		65DB37991FEF494D00BC5656 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		BC47947DAAB0BC228567E980 /* Pods-SideMenuHUBUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideMenuHUBUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SideMenuHUBUITests/Pods-SideMenuHUBUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +181,40 @@
 				BC47947DAAB0BC228567E980 /* Pods-SideMenuHUBUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		65164F5E1FF3243200138E01 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				65164F651FF33DC900138E01 /* EventIcon */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		65164F651FF33DC900138E01 /* EventIcon */ = {
+			isa = PBXGroup;
+			children = (
+				65164F721FF33EF100138E01 /* event_icon_closed.png */,
+				65164F791FF33EF100138E01 /* event_icon_closed_2x.png */,
+				65164F751FF33EF100138E01 /* event_icon_closed_3x.png */,
+				65164F7A1FF33EF200138E01 /* event_icon_important.png */,
+				65164F741FF33EF100138E01 /* event_icon_important_2x.png */,
+				65164F781FF33EF100138E01 /* event_icon_important_3x.png */,
+				65164F731FF33EF100138E01 /* event_icon_open.png */,
+				65164F761FF33EF100138E01 /* event_icon_open_2x.png */,
+				65164F771FF33EF100138E01 /* event_icon_open_3x.png */,
+			);
+			path = EventIcon;
+			sourceTree = "<group>";
+		};
+		65164F861FF341B100138E01 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				65164F871FF341C100138E01 /* nav_icon_right.png */,
+				65164F881FF341C100138E01 /* nav_icon_right_2x.png */,
+				65164F891FF341C100138E01 /* nav_icon_right_3x.png */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		652088221FF06BD800C0080E /* SideMenuSection */ = {
@@ -276,6 +332,7 @@
 				65B9E28A1FE70D2000E04121 /* HomeViewController.swift */,
 				65B9E28C1FE7118600E04121 /* SideMenuViewController.swift */,
 				65DB37991FEF494D00BC5656 /* CalendarViewController.swift */,
+				65164F8D1FF3435000138E01 /* AddEventViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -340,6 +397,8 @@
 		65B9E2B51FEEF05300E04121 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				65164F861FF341B100138E01 /* Navigation */,
+				65164F5E1FF3243200138E01 /* Calendar */,
 				65B9E2B61FEEF06200E04121 /* SideMenu */,
 				65B9E2611FE704E300E04121 /* Assets.xcassets */,
 			);
@@ -349,9 +408,6 @@
 		65B9E2B61FEEF06200E04121 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				65DB37901FEF3B3500BC5656 /* calendar.png */,
-				65DB378F1FEF3B3500BC5656 /* calendar_2x.png */,
-				65DB37911FEF3B3500BC5656 /* calendar_3x.png */,
 				65B9E2B91FEEF07C00E04121 /* placeholder_face.png */,
 				65B9E2B71FEEF07C00E04121 /* placeholder_face_2x.png */,
 				65B9E2B81FEEF07C00E04121 /* placeholder_face_3x.png */,
@@ -363,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				65B9E2C21FEF065700E04121 /* AppTheme.swift */,
+				65164F841FF33FB700138E01 /* GlobalImages.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -491,13 +548,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65164F7E1FF33EF200138E01 /* event_icon_closed_3x.png in Resources */,
+				65164F8A1FF341C100138E01 /* nav_icon_right.png in Resources */,
+				65164F7D1FF33EF200138E01 /* event_icon_important_2x.png in Resources */,
+				65164F801FF33EF200138E01 /* event_icon_open_3x.png in Resources */,
+				65164F821FF33EF200138E01 /* event_icon_closed_2x.png in Resources */,
+				65164F7B1FF33EF200138E01 /* event_icon_closed.png in Resources */,
+				65164F831FF33EF200138E01 /* event_icon_important.png in Resources */,
 				65B9E2BC1FEEF07C00E04121 /* placeholder_face.png in Resources */,
-				65DB37931FEF3B3500BC5656 /* calendar.png in Resources */,
 				65B9E2BB1FEEF07C00E04121 /* placeholder_face_3x.png in Resources */,
+				65164F7C1FF33EF200138E01 /* event_icon_open.png in Resources */,
+				65164F7F1FF33EF200138E01 /* event_icon_open_2x.png in Resources */,
 				65B9E2BA1FEEF07C00E04121 /* placeholder_face_2x.png in Resources */,
-				65DB37941FEF3B3500BC5656 /* calendar_3x.png in Resources */,
+				65164F8C1FF341C100138E01 /* nav_icon_right_3x.png in Resources */,
 				65B9E2621FE704E300E04121 /* Assets.xcassets in Resources */,
-				65DB37921FEF3B3500BC5656 /* calendar_2x.png in Resources */,
+				65164F811FF33EF200138E01 /* event_icon_important_3x.png in Resources */,
+				65164F8B1FF341C100138E01 /* nav_icon_right_2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,6 +727,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65B9E2A11FE768A800E04121 /* SideMenuOptionController.swift in Sources */,
+				65164F8E1FF3435000138E01 /* AddEventViewController.swift in Sources */,
 				65B9E25B1FE704E300E04121 /* AppDelegate.swift in Sources */,
 				654C9BBC1FF1B8B400D4647F /* CalendarEventSectionController.swift in Sources */,
 				65B9E2951FE71DC600E04121 /* BaseViewController.swift in Sources */,
@@ -680,6 +747,7 @@
 				65B9E2C31FEF065700E04121 /* AppTheme.swift in Sources */,
 				65B9E2BE1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift in Sources */,
 				65B9E29E1FE734AF00E04121 /* SideMenuHeader.swift in Sources */,
+				65164F851FF33FB700138E01 /* GlobalImages.swift in Sources */,
 				654C9BC41FF204FE00D4647F /* Event.swift in Sources */,
 				6520882E1FF0A96900C0080E /* EmbeddedSectionController.swift in Sources */,
 			);

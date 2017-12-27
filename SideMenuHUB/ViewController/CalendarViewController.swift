@@ -15,7 +15,11 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
 
     //MARK: Private Variables
     fileprivate var calendarViewObjects:Array = [ListDiffable]()
-    
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
     fileprivate lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     }()
@@ -24,6 +28,11 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
         view.backgroundColor = UIColor.white
         //view.alwaysBounceVertical = true
         return view
+    }()
+    fileprivate lazy var addButton:UIBarButtonItem = {
+        let image = UIImage.init(named: "add_event")?.withRenderingMode(.alwaysOriginal)
+        let button = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.buttonAdd_touchUpInside(sender:)))
+        return button
     }()
     
     fileprivate var calendar: FSCalendar = {
@@ -48,7 +57,6 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     
     override func loadView() {
         super.loadView()
-        self.setupObserver()
         self.setupView()
         self.getCalendarSectionObjects()
     }
@@ -62,9 +70,12 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.setupObserver()
+    }
     override func viewWillDisappear(_ animated: Bool) {
         //remove observer to prevent memory leak
-         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        self.removeObserver()
     }
 
 
@@ -74,7 +85,10 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     fileprivate func setupObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(CalendarViewController.orientationDidChanges), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
-    
+
+    fileprivate func removeObserver() {
+         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
     fileprivate func setupConstraints() {
         //Calendar
         self.calendar.snp.updateConstraints { (make) in
@@ -126,8 +140,8 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
         
         //EVENT LIST TESTING
         var eventOptions:Array = [Event]()
-        eventOptions.append(Event.init(WithName: "Shopping", icon: nil)!)
-        eventOptions.append(Event.init(WithName: "Pooping", icon: nil)!)
+        eventOptions.append(Event.init(WithName: "Shopping", icon: GlobalImages().eventIconOpen())!)
+        eventOptions.append(Event.init(WithName: "Pooping", icon: GlobalImages().eventIconImportant())!)
         self.calendarViewObjects.append(ListDiffableArray.init(withArray: eventOptions))
         self.adapter.performUpdates(animated: true, completion: nil)
     }
@@ -147,7 +161,12 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
         }
         self.adapter.reloadData(completion: nil)
     }
-    
+    @objc func buttonAdd_touchUpInside(sender: UIBarButtonItem) {
+        print("Add Event View")
+        let destinationVC = AddEventViewController()
+        self.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+
     //MARK: Delegate Method
     
     //MARK: CalendarEventSectionDelegate
@@ -167,11 +186,18 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     
     //Tells the delegate a date in the calendar is deselected by tapping.
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        //remove button
+        if (self.calendar.selectedDates.count == 0){self.navigationItem.rightBarButtonItem = nil}
         print("Deselect Date \(date)")
     }
     // Tells the delegate a date in the calendar is selected by tapping.
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("Selected Date \(date)")
+        //add button
+        self.navigationItem.rightBarButtonItem = self.addButton
+        if monthPosition == .previous || monthPosition == .next {
+            calendar.setCurrentPage(date, animated: true)
+        }
     }
 
     //needs to update frame when hiding/showing week-month view
@@ -184,6 +210,11 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
         self.adapter.reloadData(completion: nil)
         self.view.layoutIfNeeded()
     }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("change page to \(self.formatter.string(from: calendar.currentPage))")
+    }
+    
      //Asks the delegate whether the specific date is allowed to be selected by tapping.
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return true

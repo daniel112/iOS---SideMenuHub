@@ -50,7 +50,7 @@ class CalendarEventCollectionViewCell: UICollectionViewCell {
         subLabel.backgroundColor = .clear
         subLabel.font = UIFont(name: AppTheme().mainFont_regular(), size: 10)
         subLabel.textColor = AppTheme().textColor()
-        subLabel.text = String(describing: self.participants?.count)
+        subLabel.text = String(describing: self.participants?.count) + " participant(s)"
         return subLabel
     }()
     lazy fileprivate var imageView:UIImageView = {
@@ -86,20 +86,41 @@ class CalendarEventCollectionViewCell: UICollectionViewCell {
             make.edges.equalToSuperview()
         }
         //image
-        
+        if let _ = self.icon {
+            self.wrapper.addSubview(self.imageView)
+            self.imageView.snp.makeConstraints({ (make) in
+                make.centerY.equalTo(self.wrapper)
+                make.width.equalTo(24)
+                make.height.equalTo(24)
+            })
+        }
         //label
         self.wrapper.addSubview(self.label)
         self.label.snp.updateConstraints { (make) in
             make.center.equalToSuperview()
         }
         //subLabel
+        if self.participants?.count == 0 || self.participants == nil {
+            self.subLabel.text = ""
+        }
         self.wrapper.addSubview(self.subLabel)
         self.subLabel.snp.updateConstraints { (make) in
             make.top.equalTo(self.label.snp.bottom)
             make.bottom.equalTo(self.wrapper)
             make.centerX.equalToSuperview()
         }
+        //nav icon right
+        let navIcon = UIImage.init(named: "nav_icon_right")
+        let navImageView = UIImageView.init(image: navIcon)
+        self.wrapper.addSubview(navImageView)
+        navImageView.snp.updateConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview()
+            make.width.equalTo(24)
+            make.height.equalTo(24)
+        }
         
+        //bottom border
         self.wrapper.addSubview(self.lineView)
         self.lineView.snp.updateConstraints { (make) in
             make.bottom.left.right.equalToSuperview()

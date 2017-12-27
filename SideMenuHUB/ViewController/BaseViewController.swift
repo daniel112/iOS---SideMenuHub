@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
         //set bg color
         view.backgroundColor = UIColor.white
         
-        let sideMenuButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(buttonMenu_touchUpInside(sender:)))
+        
         
         // Navigation - Status Bar Style
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
@@ -44,9 +44,11 @@ class BaseViewController: UIViewController {
             let revealController:SWRevealViewController = self.revealViewController()
             revealController.panGestureRecognizer()
             revealController.tapGestureRecognizer()
+            let sideMenuButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(buttonMenu_touchUpInside(sender:)))
+            self.navigationItem.leftBarButtonItem = sideMenuButton
         }
+        self.navigationItem.backBarButtonItem = UIBarButtonItem()
         
-        self.navigationItem.leftBarButtonItem = sideMenuButton
     }
     
     @objc func buttonMenu_touchUpInside(sender: UIBarButtonItem) {

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         //navigationBar settings
-        UINavigationBar.appearance().tintColor = UIColor.black
+        //UINavigationBar.appearance().tintColor = UIColor.black
         //easy way to make nav bar transparent
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
