@@ -22,6 +22,10 @@
 		65164F8B1FF341C100138E01 /* nav_icon_right_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F881FF341C100138E01 /* nav_icon_right_2x.png */; };
 		65164F8C1FF341C100138E01 /* nav_icon_right_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65164F891FF341C100138E01 /* nav_icon_right_3x.png */; };
 		65164F8E1FF3435000138E01 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F8D1FF3435000138E01 /* AddEventViewController.swift */; };
+		65164F911FF44B5100138E01 /* EventInputText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F901FF44B5100138E01 /* EventInputText.swift */; };
+		65164F931FF44B5E00138E01 /* EventInputButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F921FF44B5E00138E01 /* EventInputButton.swift */; };
+		65164F961FF44E0D00138E01 /* AddEventSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F951FF44E0D00138E01 /* AddEventSectionController.swift */; };
+		65164F991FF4505E00138E01 /* AddEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F981FF4505E00138E01 /* AddEventCollectionViewCell.swift */; };
 		6520882E1FF0A96900C0080E /* EmbeddedSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520882D1FF0A96900C0080E /* EmbeddedSectionController.swift */; };
 		652088311FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088301FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift */; };
 		652088331FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088321FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift */; };
@@ -91,6 +95,10 @@
 		65164F881FF341C100138E01 /* nav_icon_right_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_icon_right_2x.png; sourceTree = "<group>"; };
 		65164F891FF341C100138E01 /* nav_icon_right_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_icon_right_3x.png; sourceTree = "<group>"; };
 		65164F8D1FF3435000138E01 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		65164F901FF44B5100138E01 /* EventInputText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInputText.swift; sourceTree = "<group>"; };
+		65164F921FF44B5E00138E01 /* EventInputButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInputButton.swift; sourceTree = "<group>"; };
+		65164F951FF44E0D00138E01 /* AddEventSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventSectionController.swift; sourceTree = "<group>"; };
+		65164F981FF4505E00138E01 /* AddEventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCollectionViewCell.swift; sourceTree = "<group>"; };
 		6520882D1FF0A96900C0080E /* EmbeddedSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedSectionController.swift; sourceTree = "<group>"; };
 		652088301FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		652088321FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -215,6 +223,32 @@
 				65164F891FF341C100138E01 /* nav_icon_right_3x.png */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		65164F8F1FF44B1400138E01 /* Eventing */ = {
+			isa = PBXGroup;
+			children = (
+				654C9BC31FF204FE00D4647F /* Event.swift */,
+				65164F901FF44B5100138E01 /* EventInputText.swift */,
+				65164F921FF44B5E00138E01 /* EventInputButton.swift */,
+			);
+			path = Eventing;
+			sourceTree = "<group>";
+		};
+		65164F941FF44DEB00138E01 /* EventSection */ = {
+			isa = PBXGroup;
+			children = (
+				65164F951FF44E0D00138E01 /* AddEventSectionController.swift */,
+			);
+			path = EventSection;
+			sourceTree = "<group>";
+		};
+		65164F971FF4504900138E01 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				65164F981FF4505E00138E01 /* AddEventCollectionViewCell.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		652088221FF06BD800C0080E /* SideMenuSection */ = {
@@ -343,7 +377,7 @@
 				65B9E29F1FE736FA00E04121 /* ListDiffable */,
 				65B9E29D1FE734AF00E04121 /* SideMenuHeader.swift */,
 				65B9E2981FE7235700E04121 /* ModuleOption.swift */,
-				654C9BC31FF204FE00D4647F /* Event.swift */,
+				65164F8F1FF44B1400138E01 /* Eventing */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,6 +385,7 @@
 		65B9E29C1FE72E2D00E04121 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				65164F941FF44DEB00138E01 /* EventSection */,
 				654C9BC21FF1FA5800D4647F /* LabelSection */,
 				652088361FF0C7E300C0080E /* CalendarSection */,
 				652088221FF06BD800C0080E /* SideMenuSection */,
@@ -369,6 +404,7 @@
 		65B9E2A61FE7791D00E04121 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				65164F971FF4504900138E01 /* Event */,
 				6520882F1FF0AC1700C0080E /* Calendar */,
 				652088231FF06BEA00C0080E /* SideMenu */,
 				654C9BC11FF1FA4800D4647F /* Label */,
@@ -732,6 +768,8 @@
 				654C9BBC1FF1B8B400D4647F /* CalendarEventSectionController.swift in Sources */,
 				65B9E2951FE71DC600E04121 /* BaseViewController.swift in Sources */,
 				65B9E2A81FE7794500E04121 /* SideMenuOptionCollectionViewCell.swift in Sources */,
+				65164F991FF4505E00138E01 /* AddEventCollectionViewCell.swift in Sources */,
+				65164F911FF44B5100138E01 /* EventInputText.swift in Sources */,
 				654C9BC61FF207F400D4647F /* CalendarEventCollectionViewCell.swift in Sources */,
 				65B9E29B1FE726F600E04121 /* ListDiffableArray.swift in Sources */,
 				65B9E28D1FE7118600E04121 /* SideMenuViewController.swift in Sources */,
@@ -747,7 +785,9 @@
 				65B9E2C31FEF065700E04121 /* AppTheme.swift in Sources */,
 				65B9E2BE1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift in Sources */,
 				65B9E29E1FE734AF00E04121 /* SideMenuHeader.swift in Sources */,
+				65164F961FF44E0D00138E01 /* AddEventSectionController.swift in Sources */,
 				65164F851FF33FB700138E01 /* GlobalImages.swift in Sources */,
+				65164F931FF44B5E00138E01 /* EventInputButton.swift in Sources */,
 				654C9BC41FF204FE00D4647F /* Event.swift in Sources */,
 				6520882E1FF0A96900C0080E /* EmbeddedSectionController.swift in Sources */,
 			);

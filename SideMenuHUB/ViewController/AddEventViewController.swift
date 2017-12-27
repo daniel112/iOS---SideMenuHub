@@ -9,13 +9,14 @@
 import UIKit
 import IGListKit
 import FSCalendar
-class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendarDataSource {
+class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendarDataSource, ListAdapterDataSource {
 
 
     //MARK: Public Variable
     var selectedDates = [Date]()
     
     //MARK: Private Variable
+    fileprivate var eventQuestions:Array = [ListDiffable]()
     fileprivate var calendar: FSCalendar = {
         let calendar = FSCalendar()
         calendar.allowsMultipleSelection = true
@@ -23,17 +24,25 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
         calendar.clipsToBounds = true //hide top-bottom border
         return calendar
     }()
-
+    fileprivate lazy var adapter: ListAdapter = {
+        return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    }()
+    fileprivate let collectionView: UICollectionView = {
+        let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.backgroundColor = UIColor.white
+        //view.alwaysBounceVertical = true
+        return view
+    }()
     
     //MARK: Lifecycle
     override func loadView() {
         super.loadView()
-        //self.setupView()
+        self.setupView()
+        self.getEventQuestions()
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupView()
         // Do any additional setup after loading the view.
     }
 
@@ -53,6 +62,17 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
     fileprivate func removeObserver() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
+    
+    fileprivate func getEventQuestions() {
+        var options:Array = [Any]()
+        
+        options.append(EventInputText.init(WithLabel: "Event Name", icon: nil, userText: nil)!)
+        options.append(EventInputText.init(WithLabel: "Location", icon: nil, userText: nil)!)
+        //store in the global array as a ListDiffableArray type
+        self.eventQuestions.append(ListDiffableArray.init(withArray: options))
+        self.adapter.performUpdates(animated: true, completion: nil)
+    }
+    
     fileprivate func setupView() {
         //Calendar
         self.view.addSubview(self.calendar)
@@ -69,6 +89,17 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
         }
         //navigation title
         self.navigationController?.title = "Add Event"
+        
+        //collectionView
+        self.view.addSubview(self.collectionView)
+        self.collectionView.backgroundColor = AppTheme().mainColor()
+        self.collectionView.snp.makeConstraints({ (make) in
+            make.top.equalTo(self.calendar.snp.bottom)
+            make.left.bottom.right.equalTo(self.view)
+        })
+        //adapter
+        self.adapter.collectionView = self.collectionView
+        self.adapter.dataSource = self
        
     }
     //MARK: - objc Methods
@@ -88,7 +119,7 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
         }
         //update event section
        // self.getCalendarSectionObjects()
-       // self.adapter.reloadData(completion: nil)
+        self.adapter.reloadData(completion: nil)
         self.view.layoutIfNeeded()
     }
     
@@ -98,6 +129,22 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
     }
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return false
+    }
+    
+    //MARK: ListAdapterDataSource
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return self.eventQuestions
+    }
+    
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        
+        let sectionController:AddEventSectionController = AddEventSectionController()
+        sectionController.delegate = self
+        return sectionController
+    }
+    
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
     }
 
 }
