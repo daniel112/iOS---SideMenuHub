@@ -83,7 +83,7 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     //MARK: Private method
     
     fileprivate func setupObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(CalendarViewController.orientationDidChanges), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CalendarViewController.orientationDidChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 
     fileprivate func removeObserver() {
@@ -154,7 +154,7 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     
     
     //MARK: - objc Methods
-    @objc func orientationDidChanges() {
+    @objc func orientationDidChange() {
         print("Orientation changed")
         calendar.snp.updateConstraints { (make) in
             make.width.equalTo(self.view.frame.width)
@@ -164,7 +164,8 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     @objc func buttonAdd_touchUpInside(sender: UIBarButtonItem) {
         print("Add Event View")
         let destinationVC = AddEventViewController()
-        self.navigationController?.pushViewController(destinationVC, animated: true)
+        destinationVC.selectedDates = self.calendar.selectedDates
+        self.navigationController!.pushViewController(destinationVC, animated: true)
     }
 
     //MARK: Delegate Method

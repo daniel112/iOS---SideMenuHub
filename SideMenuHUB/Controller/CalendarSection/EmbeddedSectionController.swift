@@ -50,6 +50,7 @@ class EmbeddedSectionController: ListSectionController, ListAdapterDataSource {
     
     override func didUpdate(to object: Any) {
         //break down each object into diffable object
+        precondition(object is ListDiffableArray)
         let diffableArray = object as! ListDiffableArray
         self.optionArray.append(diffableArray)
     }

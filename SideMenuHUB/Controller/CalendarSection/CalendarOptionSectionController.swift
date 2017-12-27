@@ -49,6 +49,7 @@ class CalendarOptionSectionController: ListSectionController {
     }
     
     override func didUpdate(to object: Any) {
+        precondition(object is ListDiffableArray)
         let diffableArray:ListDiffableArray = object as! ListDiffableArray
         self.optionArray = diffableArray.array! as! Array<ModuleOption>
     }

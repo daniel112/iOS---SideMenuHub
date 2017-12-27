@@ -38,6 +38,7 @@ class LabelSectionController: ListSectionController {
     }
     
     override func didUpdate(to object: Any) {
+        precondition(object is String)
         self.headerLabel = object as? String
     }
     

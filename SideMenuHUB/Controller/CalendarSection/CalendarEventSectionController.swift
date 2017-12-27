@@ -47,6 +47,7 @@ class CalendarEventSectionController: ListSectionController {
     }
     
     override func didUpdate(to object: Any) {
+        precondition(object is ListDiffableArray)
         let diffableArray:ListDiffableArray = object as! ListDiffableArray
         self.listArray = diffableArray.array! as! Array<Event>
     }
