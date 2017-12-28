@@ -85,7 +85,6 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
     fileprivate func setupView() {
        
         self.view.addSubview(self.scrollView)
-        self.scrollView.backgroundColor = UIColor.red
         self.scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -118,28 +117,30 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
     }
     //MARK: - objc Methods
     @objc func orientationDidChange() {
-        calendar.snp.updateConstraints { (make) in
-            make.width.equalTo(self.view.frame.width)
+        self.calendar.snp.updateConstraints { (make) in
+            make.width.equalToSuperview()
         }
-        //self.adapter.reloadData(completion: nil)
+        self.adapter.reloadData(completion: nil)
     }
     @objc fileprivate func keyboardWillShow(notification: NSNotification) {
         
         if let activeTextField = self.activeTextField {
-            let info: NSDictionary = notification.userInfo! as NSDictionary
-            let value: NSValue = info.value(forKey: UIKeyboardFrameBeginUserInfoKey) as! NSValue
-            let keyboardSize: CGSize = value.cgRectValue.size
-            let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
+            var info = notification.userInfo
+            let value = info![UIKeyboardFrameEndUserInfoKey] as? NSValue
+            let rawFrame: CGRect = value!.cgRectValue
+            let keyboardFrame: CGRect = view.convert(rawFrame, from: nil)
+            print("keyboardFrame: \(NSStringFromCGRect(keyboardFrame))")
+            let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardFrame.height, 0.0)
             scrollView.contentInset = contentInsets
             scrollView.scrollIndicatorInsets = contentInsets
 
             //adjust scrollview
             var keyboardRect: CGRect = self.view.frame
-            keyboardRect.size.height -= keyboardSize.height
+            keyboardRect.size.height -= keyboardFrame.height
             let activeTextFieldRect: CGRect? = self.view.convert(activeTextField.frame, from: activeTextField.superview)
-            let activeTextFieldOrigin: CGPoint? = activeTextFieldRect?.origin
-            if (keyboardRect.size.height < activeTextFieldOrigin!.y + activeTextFieldRect!.size.height) {
-                let scrollPoint = CGPoint(x: 0.0, y: activeTextFieldOrigin!.y - (keyboardSize.height + 200))
+            let activeTextFieldBottomEdge = activeTextFieldRect!.origin.y + activeTextFieldRect!.size.height
+            if (keyboardRect.size.height < activeTextFieldBottomEdge) {
+                let scrollPoint = CGPoint(x: 0.0, y: activeTextFieldBottomEdge - (keyboardRect.height))
                 self.scrollView.setContentOffset(scrollPoint, animated: true)
             }
 

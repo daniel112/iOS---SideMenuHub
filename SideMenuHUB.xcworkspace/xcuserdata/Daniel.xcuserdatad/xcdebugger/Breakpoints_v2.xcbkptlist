@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SideMenuHUB/ViewController/CalendarViewController.swift"
-            timestampString = "536107837.150779"
+            timestampString = "536176921.07786"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "226"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SideMenuHUB/ViewController/CalendarViewController.swift"
-            timestampString = "536107837.150994"
+            timestampString = "536176921.078054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
@@ -506,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SideMenuHUB/ViewController/CalendarViewController.swift"
-            timestampString = "536107837.15109"
+            timestampString = "536176921.07811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -568,11 +568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SideMenuHUB/ViewController/AddEventViewController.swift"
-            timestampString = "536174301.083481"
+            timestampString = "536176921.078332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "setupView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -584,7 +584,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SideMenuHUB/Controller/EventSection/AddEventSectionController.swift"
-            timestampString = "536174301.083573"
+            timestampString = "536176921.078811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -600,11 +600,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SideMenuHUB/ViewController/AddEventViewController.swift"
-            timestampString = "536174301.083649"
+            timestampString = "536176921.078881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "objects(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -616,11 +616,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SideMenuHUB/ViewController/AddEventViewController.swift"
-            timestampString = "536174301.08372"
+            timestampString = "536176921.079202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "textFieldIsSelected(activeTextField:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -632,13 +632,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SideMenuHUB/ViewController/AddEventViewController.swift"
-            timestampString = "536174301.083793"
+            timestampString = "536176921.079491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "keyboardWillShow(notification:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SideMenuHUB/ViewController/AddEventViewController.swift"
+            timestampString = "536176921.079842"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "orientationDidChange()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SideMenuHUB.AddEventViewController.orientationDidChange() -&gt; ()"
+                  moduleName = "SideMenuHUB"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/asu/other%20programs/iOS/SideMenuHUB/SideMenuHUB/ViewController/AddEventViewController.swift"
+                  timestampString = "536175094.018431"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "14">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SnapKit.ConstraintMaker) -&gt; () in SideMenuHUB.AddEventViewController.orientationDidChange() -&gt; ()"
+                  moduleName = "SideMenuHUB"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/asu/other%20programs/iOS/SideMenuHUB/SideMenuHUB/ViewController/AddEventViewController.swift"
+                  timestampString = "536175094.020242"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

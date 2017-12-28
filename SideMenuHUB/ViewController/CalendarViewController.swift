@@ -156,7 +156,7 @@ class CalendarViewController: BaseViewController, FSCalendarDataSource, FSCalend
     //MARK: - objc Methods
     @objc func orientationDidChange() {
         print("Orientation changed")
-        calendar.snp.updateConstraints { (make) in
+        self.calendar.snp.updateConstraints { (make) in
             make.width.equalTo(self.view.frame.width)
         }
         self.adapter.reloadData(completion: nil)
