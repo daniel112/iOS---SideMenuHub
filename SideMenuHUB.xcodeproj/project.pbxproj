@@ -26,6 +26,7 @@
 		65164F931FF44B5E00138E01 /* EventInputButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F921FF44B5E00138E01 /* EventInputButton.swift */; };
 		65164F961FF44E0D00138E01 /* AddEventSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F951FF44E0D00138E01 /* AddEventSectionController.swift */; };
 		65164F991FF4505E00138E01 /* AddEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164F981FF4505E00138E01 /* AddEventCollectionViewCell.swift */; };
+		65164FF41FF55E7700138E01 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65164FF31FF55E7700138E01 /* UIViewControllerExtension.swift */; };
 		6520882E1FF0A96900C0080E /* EmbeddedSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520882D1FF0A96900C0080E /* EmbeddedSectionController.swift */; };
 		652088311FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088301FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift */; };
 		652088331FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652088321FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift */; };
@@ -99,6 +100,7 @@
 		65164F921FF44B5E00138E01 /* EventInputButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInputButton.swift; sourceTree = "<group>"; };
 		65164F951FF44E0D00138E01 /* AddEventSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventSectionController.swift; sourceTree = "<group>"; };
 		65164F981FF4505E00138E01 /* AddEventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCollectionViewCell.swift; sourceTree = "<group>"; };
+		65164FF31FF55E7700138E01 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		6520882D1FF0A96900C0080E /* EmbeddedSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedSectionController.swift; sourceTree = "<group>"; };
 		652088301FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		652088321FF0BD3A00C0080E /* EmbeddedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -251,6 +253,14 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		65164FF21FF55E5500138E01 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				65164FF31FF55E7700138E01 /* UIViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		652088221FF06BD800C0080E /* SideMenuSection */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +372,7 @@
 		65B9E2961FE7222F00E04121 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				65164FF21FF55E5500138E01 /* Extension */,
 				65B9E2941FE71DC600E04121 /* BaseViewController.swift */,
 				65B9E28A1FE70D2000E04121 /* HomeViewController.swift */,
 				65B9E28C1FE7118600E04121 /* SideMenuViewController.swift */,
@@ -783,6 +794,7 @@
 				65B9E2A31FE768B300E04121 /* SideMenuHeaderController.swift in Sources */,
 				652088311FF0AC4E00C0080E /* CalendarOptionCollectionViewCell.swift in Sources */,
 				65B9E2C31FEF065700E04121 /* AppTheme.swift in Sources */,
+				65164FF41FF55E7700138E01 /* UIViewControllerExtension.swift in Sources */,
 				65B9E2BE1FEEF2E800E04121 /* SideMenuHeaderCollectionViewCell.swift in Sources */,
 				65B9E29E1FE734AF00E04121 /* SideMenuHeader.swift in Sources */,
 				65164F961FF44E0D00138E01 /* AddEventSectionController.swift in Sources */,

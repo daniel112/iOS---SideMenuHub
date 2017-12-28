@@ -9,13 +9,17 @@
 import UIKit
 import IGListKit
 import FSCalendar
-class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendarDataSource, ListAdapterDataSource {
-
+class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendarDataSource, ListAdapterDataSource, AddEventSectionControllerDelegate {
 
     //MARK: Public Variable
     var selectedDates = [Date]()
     
     //MARK: Private Variable
+    fileprivate var scrollView:UIScrollView = {
+       let scrollView = UIScrollView()
+        return scrollView
+    }()
+    fileprivate var activeTextField: UITextField?
     fileprivate var eventQuestions:Array = [ListDiffable]()
     fileprivate var calendar: FSCalendar = {
         let calendar = FSCalendar()
@@ -57,10 +61,14 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
         self.removeObserver()
     }
     fileprivate func setupObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(CalendarViewController.orientationDidChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.orientationDidChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     fileprivate func removeObserver() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardDidHide, object: nil)
     }
     
     fileprivate func getEventQuestions() {
@@ -68,22 +76,28 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
         
         options.append(EventInputText.init(WithLabel: "Event Name", icon: nil, userText: nil)!)
         options.append(EventInputText.init(WithLabel: "Location", icon: nil, userText: nil)!)
+        options.append(EventInputText.init(WithLabel: "Time", icon: nil, userText: nil)!)
         //store in the global array as a ListDiffableArray type
         self.eventQuestions.append(ListDiffableArray.init(withArray: options))
         self.adapter.performUpdates(animated: true, completion: nil)
     }
     
     fileprivate func setupView() {
-        //Calendar
-        self.view.addSubview(self.calendar)
+       
+        self.view.addSubview(self.scrollView)
+        self.scrollView.backgroundColor = UIColor.red
+        self.scrollView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+         //Calendar
+        self.scrollView.addSubview(self.calendar)
         self.calendar.dataSource = self
         self.calendar.delegate = self
-        self.calendar.snp.updateConstraints { (make) in
-            make.width.equalTo(self.view.frame.width)
+        self.calendar.snp.makeConstraints({ (make) in
+            make.width.equalToSuperview()
             make.height.equalTo(300)
-            make.left.equalTo(self.view)
-            make.top.equalTo((self.navigationController?.navigationBar.frame.height)!)
-        }
+            make.top.left.equalToSuperview()
+        })
         for date in self.selectedDates {
             self.calendar.select(date)
         }
@@ -91,7 +105,7 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
         self.navigationController?.title = "Add Event"
         
         //collectionView
-        self.view.addSubview(self.collectionView)
+        self.scrollView.addSubview(self.collectionView)
         self.collectionView.backgroundColor = AppTheme().mainColor()
         self.collectionView.snp.makeConstraints({ (make) in
             make.top.equalTo(self.calendar.snp.bottom)
@@ -109,6 +123,41 @@ class AddEventViewController: BaseViewController, FSCalendarDelegate, FSCalendar
         }
         //self.adapter.reloadData(completion: nil)
     }
+    @objc fileprivate func keyboardWillShow(notification: NSNotification) {
+        
+        if let activeTextField = self.activeTextField {
+            let info: NSDictionary = notification.userInfo! as NSDictionary
+            let value: NSValue = info.value(forKey: UIKeyboardFrameBeginUserInfoKey) as! NSValue
+            let keyboardSize: CGSize = value.cgRectValue.size
+            let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+
+            //adjust scrollview
+            var keyboardRect: CGRect = self.view.frame
+            keyboardRect.size.height -= keyboardSize.height
+            let activeTextFieldRect: CGRect? = self.view.convert(activeTextField.frame, from: activeTextField.superview)
+            let activeTextFieldOrigin: CGPoint? = activeTextFieldRect?.origin
+            if (keyboardRect.size.height < activeTextFieldOrigin!.y + activeTextFieldRect!.size.height) {
+                let scrollPoint = CGPoint(x: 0.0, y: activeTextFieldOrigin!.y - (keyboardSize.height + 200))
+                self.scrollView.setContentOffset(scrollPoint, animated: true)
+            }
+
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        let contentInsets: UIEdgeInsets = .zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    //MARK: AddEventSectionControllerDelegate
+    func textFieldIsSelected(activeTextField: UITextField) {
+        self.activeTextField = activeTextField
+        let frame = self.view.convert(activeTextField.frame, from: activeTextField.superview)
+        print("frame from controller: \(frame)")
+    }
+    
     
     //MARK: FSCalendarDelegate
     

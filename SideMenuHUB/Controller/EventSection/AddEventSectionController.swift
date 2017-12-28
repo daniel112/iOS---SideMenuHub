@@ -9,10 +9,13 @@
 import UIKit
 import IGListKit
 
+protocol AddEventSectionControllerDelegate {
+    func textFieldIsSelected(activeTextField:UITextField)
+}
 class AddEventSectionController: ListSectionController, UITextFieldDelegate {
 
     //MARK: Public Variable
-    var delegate:Any?
+    var delegate:AddEventViewController?
     
     //MARK: Private Variable
     fileprivate var questionArray = [EventInputText]()// EventInputText & EventInputButton
@@ -36,6 +39,7 @@ class AddEventSectionController: ListSectionController, UITextFieldDelegate {
         
         cell.name = self.questionArray[index].label
         cell.icon = self.questionArray[index].icon
+        cell.delegate = self
         cell.updateView()
         return cell
         
@@ -47,9 +51,28 @@ class AddEventSectionController: ListSectionController, UITextFieldDelegate {
         self.questionArray = diffableArray.array! as! [EventInputText]
     }
     
-    override func didSelectItem(at index: Int) {}
+    override func didSelectItem(at index: Int) {
+    }
     
-
+    //MARK: - UITextField Delegate Methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+       
+        
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //get frame in relation of the textfields parent view
+        let frame = self.delegate!.view.convert(textField.frame, from: textField.superview)
+        print("frame from controller: \(frame)")
+        if let delegateVC = self.delegate {
+            delegateVC.textFieldIsSelected(activeTextField: textField)
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
    
 
 }

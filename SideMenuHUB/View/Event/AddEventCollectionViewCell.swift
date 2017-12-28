@@ -12,6 +12,7 @@ import SnapKit
 class AddEventCollectionViewCell: UICollectionViewCell {
     
     //MARK: Public Variable
+    var delegate:AddEventSectionController?
     var name:String? {
         get {
             return self.label.text
@@ -57,6 +58,7 @@ class AddEventCollectionViewCell: UICollectionViewCell {
     }()
     lazy fileprivate var inputText:UITextField = {
        let inputText = UITextField()
+        inputText.delegate = self.delegate
         inputText.textColor = UIColor.white
         return inputText
     }()

@@ -124,7 +124,7 @@ class CalendarEventCollectionViewCell: UICollectionViewCell {
         self.wrapper.addSubview(self.lineView)
         self.lineView.snp.updateConstraints { (make) in
             make.bottom.left.right.equalToSuperview()
-            make.top.equalTo(self.subLabel.snp.bottom).offset(20)
+            //make.top.equalTo(self.subLabel.snp.bottom).offset(20)
             make.height.equalTo(1)
         }
     }
