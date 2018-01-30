@@ -1,19 +1,25 @@
 PODS:
+  - FSCalendar (2.7.9)
   - IGListKit (3.1.1):
     - IGListKit/Default (= 3.1.1)
   - IGListKit/Default (3.1.1):
     - IGListKit/Diffing
   - IGListKit/Diffing (3.1.1)
   - SnapKit (4.0.0)
+  - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
+  - FSCalendar (~> 2.7)
   - IGListKit (~> 3.0)
   - SnapKit (~> 4.0)
+  - SWRevealViewController (~> 2.3)
 
 SPEC CHECKSUMS:
+  FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   IGListKit: cb97f405ae43e59fe1da74271e19427ec20d3c07
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
-PODFILE CHECKSUM: 83866144d985807dc763ff504b5cf79c2f4a89c9
+PODFILE CHECKSUM: d6b7a093e7832a71715c5c7304ede3cc0111eebb
 
 COCOAPODS: 1.2.1
